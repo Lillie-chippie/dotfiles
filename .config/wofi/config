@@ -2,12 +2,15 @@ show=drun
 mode=normal
 anchor=center
 location=center
+width=600
+height=600
+columns=6
 prompt=Search...
-filter_rate=100
+filter_rate=50
 allow_markup=true
 no_actions=true
 insensitive=true
 allow_images=true
-image_size=24
+image_size=32
 gtk_dark=true
 
