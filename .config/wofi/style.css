@@ -1,13 +1,16 @@
-/* WINDOWS 11 GRID DARK THEME FOR WOFI */
-/* Adapted from Newman Sanchez Rofi collection */
+/* SWEET GIRLY DARK THEME FOR WOFI */
 
-@define-color bg0 rgba(31, 31, 31, 0.5);
-@define-color bg1 rgba(32, 32, 32, 0.75);
-@define-color bg2 #2c2c2c;
-@define-color bg3 rgba(57, 57, 57, 0.75);
-@define-color fg0 #ffffff;
-@define-color fg1 #cecece;
-@define-color accent #60cdff;
+@define-color bg0 rgba(30, 30, 46, 0.5);
+@define-color bg1 rgba(30, 30, 46, 0.8);
+@define-color bg2 #313244;
+@define-color bg3 rgba(245, 189, 230, 0.3);
+/* Transparent Pink */
+@define-color fg0 #cad3f5;
+@define-color fg1 #b8c0e0;
+@define-color accent #f5bde6;
+/* Pink */
+@define-color secondary #c6a0f6;
+/* Lavender */
 
 * {
   font-family: "Roboto", "CaskaydiaCove Nerd Font", sans-serif;
@@ -18,8 +21,8 @@ window {
   margin: 0px;
   padding: 24px;
   background-color: @bg1;
-  border-radius: 8px;
-  border: none;
+  border-radius: 12px;
+  border: 2px solid @accent;
 }
 
 #outer-box {
@@ -39,7 +42,7 @@ window {
   padding: 8px 16px;
   border: none;
   border-bottom: 2px solid @accent;
-  border-radius: 2px;
+  border-radius: 4px;
   color: @fg0;
   background-color: @bg0;
 }
@@ -65,21 +68,18 @@ window {
   margin: 4px;
   padding: 8px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   background-color: transparent;
-}
-
-/* Simulate the vertical/centered grid look */
-#entry box {
-  padding: 8px;
 }
 
 #entry:selected {
   background-color: @bg3;
+  border: 1px solid @accent;
 }
 
 #entry:selected #text {
-  color: @fg0;
+  color: @accent;
+  font-weight: bold;
 }
 
 #img {
