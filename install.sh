@@ -7,7 +7,7 @@ sudo apt-get update
 
 # Install packages
 echo "Installing packages..."
-sudo apt-get install -y hyprland waybar hyprpaper wofi nemo wl-clipboard git cmake g++ libdbus-1-dev libwayland-dev libxkbcommon-dev golang
+sudo apt-get install -y hyprland waybar hyprpaper wofi nemo kitty wl-clipboard git cmake g++ libdbus-1-dev libwayland-dev libxkbcommon-dev golang
 
 # Install cliphist
 echo "Installing cliphist..."
@@ -25,6 +25,7 @@ mkdir -p ~/.config
 cp -r .config/hypr ~/.config/
 cp -r .config/waybar ~/.config/
 cp -r .config/wofi ~/.config/
+cp -r .config/kitty ~/.config/
 
 # Fix wallpaper path in hyprpaper.conf for the current user
 echo "Updating wallpaper path configuration..."
