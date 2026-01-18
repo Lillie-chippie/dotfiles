@@ -19,7 +19,7 @@
 
 window {
   margin: 0px;
-  padding: 24px;
+  padding: 12px;
   background-color: @bg1;
   border-radius: 12px;
   border: 2px solid @accent;
@@ -65,7 +65,7 @@ window {
 }
 
 #entry {
-  margin: 4px;
+  margin: 2px;
   padding: 8px;
   border: none;
   border-radius: 8px;
