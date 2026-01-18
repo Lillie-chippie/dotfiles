@@ -9,7 +9,7 @@ sudo apt-get update
 echo "Installing packages..."
 sudo apt-get install -y waybar hyprpaper wofi nemo kitty wl-clipboard git cmake g++ libdbus-1-dev libwayland-dev libxkbcommon-dev golang \
     ninja-build libgbm-dev libdrm-dev libgl1-mesa-dev libpam0g-dev libpango1.0-dev libinput-dev wayland-protocols libpugixml-dev \
-    libjpeg-dev libwebp-dev libmagic-dev librsvg2-dev
+    libjpeg-dev libwebp-dev libmagic-dev librsvg2-dev grim slurp jq
 
 
 # Install cliphist
@@ -26,6 +26,25 @@ if ! command -v cliphist &> /dev/null; then
 else
   echo "cliphist already installed."
 fi
+
+# Install hyprshot
+echo "Installing hyprshot..."
+if ! command -v hyprshot &> /dev/null; then
+  BUILD_DIR=$(mktemp -d)
+  echo "Cloning hyprshot in $BUILD_DIR..."
+  git clone https://github.com/Gustash/Hyprshot.git "$BUILD_DIR/hyprshot"
+  echo "Installing hyprshot to /usr/local/bin..."
+  sudo rm -f /usr/local/bin/hyprshot
+  sudo cp "$BUILD_DIR/hyprshot/hyprshot" /usr/local/bin/
+  sudo chmod +x /usr/local/bin/hyprshot
+  rm -rf "$BUILD_DIR"
+  echo "hyprshot installed successfully."
+else
+  echo "hyprshot already installed."
+fi
+
+# Create screenshots directory
+mkdir -p ~/Pictures/Screenshots
 
 # Copy configuration files
 echo "Copying configuration files..."
