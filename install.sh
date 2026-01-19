@@ -9,7 +9,7 @@ sudo apt-get update
 echo "Installing packages..."
 sudo apt-get install -y waybar hyprland hyprwayland-scanner wofi nemo kitty wl-clipboard git cmake g++ libdbus-1-dev libwayland-dev libxkbcommon-dev golang \
     ninja-build libgbm-dev libdrm-dev libgl1-mesa-dev libpam0g-dev libpango1.0-dev libinput-dev wayland-protocols libpugixml-dev \
-    libjpeg-dev libwebp-dev libmagic-dev librsvg2-dev grim slurp jq
+    libjpeg-dev libwebp-dev libmagic-dev librsvg2-dev grim slurp jq libhyprlang-dev libsdbus-c++-dev
 
 
 # Install cliphist
@@ -109,9 +109,8 @@ cd "$HYPR_BUILD_DIR"
 build_cmake_project "https://github.com/hyprwm/hyprutils"
 build_cmake_project "https://github.com/hyprwm/hyprland-protocols.git"
 build_cmake_project "https://github.com/hyprwm/hyprgraphics.git"
-#build_cmake_project "https://github.com/hyprwm/hyprwayland-scanner"
-#build_cmake_project "https://github.com/hyprwm/hypridle.git"
-#build_cmake_project "https://github.com/hyprwm/hyprlock.git"
+build_cmake_project "https://github.com/hyprwm/hypridle.git"
+build_cmake_project "https://github.com/hyprwm/hyprlock.git"
 
 cd - > /dev/null
 rm -rf "$HYPR_BUILD_DIR"
