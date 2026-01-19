@@ -7,7 +7,7 @@ sudo apt-get update
 
 # Install packages
 echo "Installing packages..."
-sudo apt-get install -y waybar hyprland hyprwayland-scanner wofi nemo kitty wl-clipboard git cmake g++ libdbus-1-dev libwayland-dev libxkbcommon-dev golang \
+sudo apt-get install -y waybar hyprland hyprpaper hyprwayland-scanner wofi nemo kitty wl-clipboard git cmake g++ libdbus-1-dev libwayland-dev libxkbcommon-dev golang \
     ninja-build libgbm-dev libdrm-dev libgl1-mesa-dev libpam0g-dev libpango1.0-dev libinput-dev wayland-protocols libpugixml-dev \
     libjpeg-dev libwebp-dev libmagic-dev librsvg2-dev grim slurp jq libhyprlang-dev libsdbus-c++-dev brightnessctl
 
