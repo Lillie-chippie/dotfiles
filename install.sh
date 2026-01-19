@@ -106,10 +106,12 @@ cd "$HYPR_BUILD_DIR"
 
 
 # Main tools
-build_cmake_project "https://github.com/hyprwm/hyprgraphics.git"
+build_cmake_project "https://github.com/hyprwm/hyprutils"
 build_cmake_project "https://github.com/hyprwm/hyprland-protocols.git"
-build_cmake_project "https://github.com/hyprwm/hypridle.git"
-build_cmake_project "https://github.com/hyprwm/hyprlock.git"
+build_cmake_project "https://github.com/hyprwm/hyprgraphics.git"
+build_cmake_project "https://github.com/hyprwm/hyprwayland-scanner"
+#build_cmake_project "https://github.com/hyprwm/hypridle.git"
+#build_cmake_project "https://github.com/hyprwm/hyprlock.git"
 
 cd - > /dev/null
 rm -rf "$HYPR_BUILD_DIR"
