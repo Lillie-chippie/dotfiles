@@ -113,8 +113,8 @@
     "group/media": {
         "orientation": "horizontal",
         "drawer": {
-            "transition-duration": 500,
-            "children-class": "not-media",
+            "transition-duration": 600,
+            "children-class": "not-power",
             "transition-to-left": false,
             "click-to-reveal": true
         },
@@ -127,6 +127,8 @@
         ]
     },
     "custom/media-icon": {
+        "return-type": "json",
+        "exec": "~/.config/waybar/media.sh toggle-icon",
         "format": " ",
         "interval": 2,
         "tooltip": false
@@ -135,32 +137,31 @@
         "format": "{}",
         "return-type": "json",
         "max-length": 40,
-        "exec": "/home/kubuntu/Downloads/dotfiles-main/.config/waybar/media.sh metadata",
-        "on-click": "/home/kubuntu/Downloads/dotfiles-main/.config/waybar/media.sh toggle",
-        "interval": 2,
-        "exec-if": "/home/kubuntu/Downloads/dotfiles-main/.config/waybar/media.sh check"
+        "exec": "~/.config/waybar/media.sh metadata",
+        "on-click": "~/.config/waybar/media.sh toggle",
+        "interval": 2
     },
     "custom/media-prev": {
         "format": "",
-        "on-click": "/home/kubuntu/Downloads/dotfiles-main/.config/waybar/media.sh prev",
+        "on-click": "~/.config/waybar/media.sh prev",
         "interval": 2,
         "tooltip": false
     },
     "custom/media-playpause": {
         "format": "{icon}",
         "return-type": "json",
-        "exec": "/home/kubuntu/Downloads/dotfiles-main/.config/waybar/media.sh toggle-icon",
+        "exec": "~/.config/waybar/media.sh toggle-icon",
         "interval": 1,
         "format-icons": {
             "Playing": "",
             "Paused": ""
         },
-        "on-click": "/home/kubuntu/Downloads/dotfiles-main/.config/waybar/media.sh toggle",
+        "on-click": "~/.config/waybar/media.sh toggle",
         "tooltip": false
     },
     "custom/media-next": {
         "format": "",
-        "on-click": "/home/kubuntu/Downloads/dotfiles-main/.config/waybar/media.sh next",
+        "on-click": "~/.config/waybar/media.sh next",
         "interval": 2,
         "tooltip": false
     },

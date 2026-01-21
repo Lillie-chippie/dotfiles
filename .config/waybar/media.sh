@@ -1,56 +1,63 @@
 #!/bin/bash
 
 # Check if playerctl is available
-if ! command -v playerctl &> /dev/null; then
+PLAYERCTL="playerctl"
+JQ="jq"
+
+if ! command -v $PLAYERCTL &> /dev/null; then
     echo "playerctl not found"
     exit 1
 fi
 
 case "$1" in
     "status")
-        # Returns current status: Playing, Paused, or Stopped
-        playerctl status 2>/dev/null | grep -E "Playing|Paused" | head -n 1
+        $PLAYERCTL status 2>/dev/null | grep -E "Playing|Paused" | head -n 1
         ;;
     "toggle")
-        playerctl play-pause
+        $PLAYERCTL play-pause
         ;;
     "next")
-        playerctl next
+        $PLAYERCTL next
         ;;
     "prev")
-        playerctl previous
+        $PLAYERCTL previous
         ;;
     "toggle-icon")
-         # Returns JSON for Play/Pause icon
-         status=$(playerctl status 2>/dev/null | grep -E "Playing|Paused" | head -n 1)
-         if [[ -z "$status" ]]; then status="Paused"; fi # Default to Paused icon if unsure (so it shows Play button)
-         
-         # Alt is used for format-icons key
-         echo "{\"text\": \"$status\", \"alt\": \"$status\", \"tooltip\": \"Play/Pause\", \"class\": \"$status\"}"
+         status=$($PLAYERCTL status 2>/dev/null | grep -E "Playing|Paused" | head -n 1)
+         if [[ -n "$status" ]]; then
+             $JQ -c -n \
+                --arg text "$status" \
+                --arg alt "$status" \
+                --arg tooltip "Play/Pause" \
+                --arg class "$status" \
+                '{text: $text, alt: $alt, tooltip: $tooltip, class: $class}'
+         else
+             # Return nothing to hide
+             echo ""
+         fi
          ;;
     "metadata")
-        # Returns JSON with title, artist, and status for Waybar tooltip/label
-        # We only want to show if status is Playing or Paused (not Stopped)
-        status=$(playerctl status 2>/dev/null)
-        
-        if [[ "$status" == "Playing" || "$status" == "Paused" ]]; then
-             title=$(playerctl metadata title 2>/dev/null | sed 's/&/&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')
-             artist=$(playerctl metadata artist 2>/dev/null | sed 's/&/&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')
-             
-             # Fallback if empty
-             if [[ -z "$title" ]]; then title="Unknown Title"; fi
-             if [[ -z "$artist" ]]; then artist="Unknown Artist"; fi
+        status=$($PLAYERCTL status 2>/dev/null | grep -E "Playing|Paused" | head -n 1)
+        artist=$($PLAYERCTL metadata artist 2>/dev/null)
+        title=$($PLAYERCTL metadata title 2>/dev/null)
 
-             # Output JSON
-             echo "{\"text\": \"$artist - $title\", \"tooltip\": \"$artist - $title ($status)\", \"class\": \"$status\", \"alt\": \"$status\"}"
+        if [[ -z "$title" ]]; then title="Unknown Title"; fi
+        if [[ -z "$artist" ]]; then artist="Unknown Artist"; fi
+        
+        if [[ -n "$status" ]]; then
+            $JQ -c -n \
+                --arg text "$artist - $title" \
+                --arg tooltip "$artist - $title ($status)" \
+                --arg alt "$status" \
+                --arg class "$status" \
+                '{text: $text, tooltip: $tooltip, alt: $alt, class: $class}'
         else
-            # Empty output to hide module
-            echo "" 
+            # Return valid empty JSON to prevent waybar errors
+            echo "{\"text\": \"\", \"class\": \"stopped\"}"
         fi
         ;;
     "check")
-        # Exit success (0) if ANY player is Playing or Paused
-        if playerctl status 2>/dev/null | grep -qE "Playing|Paused"; then
+        if $PLAYERCTL status 2>/dev/null | grep -qE "Playing|Paused"; then
             exit 0
         else
             exit 1

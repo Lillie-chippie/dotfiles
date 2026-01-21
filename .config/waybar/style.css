@@ -407,46 +407,37 @@ tooltip {
     border-left-width: 0.5;
 }
 /* Media Widget Styling */
+#group-media {
+    background: #1e1e2e;
+    border-radius: 15px;
+    margin-left: 4px;
+    padding: 0;
+}
 
 #custom-media-icon {
     color: #f5bde6;
-    background: #1e1e2e;
+    background: transparent;
     padding-left: 12px;
-    padding-right: 4px;
-    margin-right: 0px;
-    border-radius: 12px 0px 0px 12px;
+    padding-right: 8px;
     font-size: 16px;
 }
 
 #custom-media-label {
-    background: #1e1e2e;
+    background: transparent;
     color: #cdd6f4;
     padding-left: 4px;
     padding-right: 12px;
-    margin-right: 4px;
-    border-radius: 0px 12px 12px 0px;
     font-weight: bold;
 }
 
 #custom-media-prev,
 #custom-media-playpause,
 #custom-media-next {
-    background: #1e1e2e;
+    background: transparent;
     color: #89b4fa;
     padding: 0 8px;
     margin: 0;
     font-size: 16px;
-}
-
-#custom-media-prev {
-     border-radius: 12px 0px 0px 12px;
-     margin-left: 4px;
-     padding-left: 12px;
-}
-
-#custom-media-next {
-    border-radius: 0px 12px 12px 0px;
-    padding-right: 12px;
 }
 
 #custom-media-playpause {
