@@ -62,7 +62,6 @@ tooltip {
 #workspaces button.active {
 
 
-    /* background-image: url("/home/anik/Documents/bar1.png");*/
     color: #f5bde6;
     transition: all 0.3s ease;
     padding-left: 4px;
@@ -77,39 +76,7 @@ tooltip {
     transition: all 0.5s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
-#taskbar button {
-    box-shadow: none;
-    text-shadow: none;
-    font-size: 4px;
-    padding: 0px;
-    border-radius: 9px;
-    margin-bottom: 3px;
-    margin-left: 0px;
-    padding-left: 3px;
-    padding-right: 3px;
-    margin-right: 0px;
-    color: @wb-color;
-    animation: tb_normal 20s ease-in-out 1;
-}
 
-#taskbar button.active {
-    background: @wb-act-bg;
-    color: @wb-act-color;
-    margin-left: 3px;
-    padding-left: 12px;
-    padding-right: 12px;
-    margin-right: 3px;
-    animation: tb_active 20s ease-in-out 1;
-    transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
-    min-height: 9px;
-}
-
-#taskbar button:hover {
-    background: @wb-hvr-bg;
-    color: @wb-hvr-color;
-    animation: tb_hover 20s ease-in-out 1;
-    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
-}
 
 #tray menu * {
     min-height: 16px;
@@ -132,21 +99,6 @@ tooltip {
 }
 
 
-#custom-mouse {
-    font-size: 14px;
-    margin-bottom: 6px;
-    background: #161320;
-}
-
-
-#custom-power {
-    font-size: 15px;
-    color: #FFFFFF;
-    background: rgba(22, 19, 32, 0.9);
-    margin: 6px 0px 6px 0px;
-    padding-left: 4px;
-    padding-right: 4px;
-}
 
 #backlight {
     color: #2096C0;
@@ -182,15 +134,7 @@ tooltip {
 
 }
 
-#idle_inhibitor {
-    color: #24966e;
-    background: @bar-bg;
-    opacity: 1;
-    margin: 4px 0px 4px 0px;
-    padding-left: 4px;
-    padding-right: 4px;
 
-}
 
 #clock {
     color: #f5bde6;
@@ -267,10 +211,6 @@ tooltip {
     padding-left: 4px
 }
 
-#custom-notifications,
-#custom-spotify,
-#taskbar,
-#custom-theme,
 #custom-menu {
     color: #E8EDF0;
     background: rgba(23, 23, 23, 0.0);
@@ -353,9 +293,7 @@ tooltip {
 }
 
 
-#taskbar {
-    padding: 1px;
-}
+
 
 #custom-r_end {
     border-radius: 0px 7px 7px 0px;
@@ -406,6 +344,7 @@ tooltip {
     border-left: solid;
     border-left-width: 0.5;
 }
+
 /* Media Widget Styling */
 #group-media {
     background: #1e1e2e;
@@ -445,7 +384,7 @@ tooltip {
 }
 
 #custom-media-playpause.Paused {
-    color: #f9e2af; 
+    color: #f9e2af;
 }
 
 #custom-media-playpause.Playing {

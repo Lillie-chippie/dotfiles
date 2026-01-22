@@ -1,49 +1,63 @@
 #!/bin/bash
 
-# Check if playerctl is available
 PLAYERCTL="playerctl"
 JQ="jq"
 
-if ! command -v $PLAYERCTL &> /dev/null; then
+# Check dependencies
+if ! command -v "$PLAYERCTL" &>/dev/null; then
     echo "playerctl not found"
     exit 1
 fi
 
+if ! command -v "$JQ" &>/dev/null; then
+    echo "jq not found"
+    exit 1
+fi
+
+get_status() {
+    $PLAYERCTL status 2>/dev/null | awk '/Playing|Paused/ { print; exit }'
+}
+
 case "$1" in
-    "status")
-        $PLAYERCTL status 2>/dev/null | grep -E "Playing|Paused" | head -n 1
+    status)
+        get_status
         ;;
-    "toggle")
+
+    toggle)
         $PLAYERCTL play-pause
         ;;
-    "next")
+
+    next)
         $PLAYERCTL next
         ;;
-    "prev")
+
+    prev)
         $PLAYERCTL previous
         ;;
-    "toggle-icon")
-         status=$($PLAYERCTL status 2>/dev/null | grep -E "Playing|Paused" | head -n 1)
-         if [[ -n "$status" ]]; then
-             $JQ -c -n \
+
+    toggle-icon)
+        status="$(get_status)"
+
+        if [[ -n "$status" ]]; then
+            $JQ -c -n \
                 --arg text "$status" \
                 --arg alt "$status" \
                 --arg tooltip "Play/Pause" \
                 --arg class "$status" \
                 '{text: $text, alt: $alt, tooltip: $tooltip, class: $class}'
-         else
-             # Return nothing to hide
-             echo ""
-         fi
-         ;;
-    "metadata")
-        status=$($PLAYERCTL status 2>/dev/null | grep -E "Playing|Paused" | head -n 1)
-        artist=$($PLAYERCTL metadata artist 2>/dev/null)
-        title=$($PLAYERCTL metadata title 2>/dev/null)
+        else
+            echo ""
+        fi
+        ;;
 
-        if [[ -z "$title" ]]; then title="Unknown Title"; fi
-        if [[ -z "$artist" ]]; then artist="Unknown Artist"; fi
-        
+    metadata)
+        status="$(get_status)"
+        artist="$($PLAYERCTL metadata artist 2>/dev/null)"
+        title="$($PLAYERCTL metadata title 2>/dev/null)"
+
+        [[ -z "$title" ]] && title="Unknown Title"
+        [[ -z "$artist" ]] && artist="Unknown Artist"
+
         if [[ -n "$status" ]]; then
             $JQ -c -n \
                 --arg text "$artist - $title" \
@@ -52,15 +66,20 @@ case "$1" in
                 --arg class "$status" \
                 '{text: $text, tooltip: $tooltip, alt: $alt, class: $class}'
         else
-            # Return valid empty JSON to prevent waybar errors
-            echo "{\"text\": \"\", \"class\": \"stopped\"}"
+            echo '{"text": "", "class": "stopped"}'
         fi
         ;;
-    "check")
-        if $PLAYERCTL status 2>/dev/null | grep -qE "Playing|Paused"; then
+
+    check)
+        if [[ -n "$(get_status)" ]]; then
             exit 0
         else
             exit 1
         fi
+        ;;
+
+    *)
+        echo "Usage: $0 {status|toggle|next|prev|toggle-icon|metadata|check}"
+        exit 1
         ;;
 esac
