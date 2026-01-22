@@ -66,7 +66,7 @@ case "$1" in
                 --arg class "$status" \
                 '{text: $text, tooltip: $tooltip, alt: $alt, class: $class}'
         else
-            echo '{"text": "", "class": "stopped"}'
+            echo '{"text": "", "class": "stopped"}' 2>/dev/null
         fi
         ;;
 
