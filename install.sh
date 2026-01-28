@@ -76,6 +76,10 @@ cp -r wallpaper/001.jpg ~/wallpaper/
 
 #add rule to disable waybar in plasmashell
 systemctl --user mask waybar.service
+#add rule to disable swaync in plasmashell
+systemctl --user mask swaync.service
+
+
 
 # Install fonts
 echo "Installing fonts..."
