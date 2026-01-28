@@ -33,7 +33,7 @@
         "break",
         {
             "type": "os",
-            "key": " ",
+            "key": "",
             "keyColor": "34", // = color4
         },
         {
@@ -43,7 +43,7 @@
         },
         {
             "type": "packages",
-            "format": "{} (pacman)",
+            "format": "{} (apt)",
             "key": " ",
             "keyColor": "34",
         },
