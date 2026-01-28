@@ -60,6 +60,7 @@ cp -r .config/hypr ~/.config/
 cp -r .config/waybar ~/.config/
 cp -r .config/wofi ~/.config/
 cp -r .config/kitty ~/.config/
+cp -r .config/fastfetch ~/.config/
 
 # Fix wallpaper path in hyprpaper.conf for the current user
 echo "Updating wallpaper path configuration..."
