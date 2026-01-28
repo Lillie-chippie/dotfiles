@@ -9,7 +9,8 @@ sudo apt-get update
 echo "Installing packages..."
 sudo apt-get install -y waybar hyprland hyprpaper hyprwayland-scanner wofi nemo kitty wl-clipboard git cmake g++ libdbus-1-dev libwayland-dev libxkbcommon-dev golang \
     ninja-build libgbm-dev libdrm-dev libgl1-mesa-dev libpam0g-dev libpango1.0-dev libinput-dev wayland-protocols libpugixml-dev \
-    libjpeg-dev libwebp-dev libmagic-dev librsvg2-dev grim slurp jq libhyprlang-dev libsdbus-c++-dev brightnessctl playerctl  sway-notification-center
+    libjpeg-dev libwebp-dev libmagic-dev librsvg2-dev grim slurp jq libhyprlang-dev libsdbus-c++-dev brightnessctl playerctl  sway-notification-center imagemagick chafa
+
 
 
 # Add user to necessary groups for brightness control
