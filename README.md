@@ -35,3 +35,5 @@ The Wofi launcher is configured to use a **2-column layout**.
 
 ## Screenshots
 ![Hyprland Screenshot](Screenshots/2026-01-18-154433_hyprshot.png)
+![Hyprland Screenshot](Screenshots/2026-01-28-145416_hyprshot.png)
+
